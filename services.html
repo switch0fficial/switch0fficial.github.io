@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - ZENKAI Premium Digital Development</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="Logo/logo.jpg1.png">
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="loading-logo mb-4">
+                <h1 class="text-5xl font-bold text-white animate-pulse">ZENKAI</h1>
+            </div>
+            <div class="loading-bar w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
+                <div class="loading-progress h-full bg-gradient-to-r from-amber-100 to-white animate-pulse"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 bg-black/80 backdrop-blur-lg border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-4">
+                    <!-- Logo -->
+                    <img src="Logo/logo.jpg1.png" alt="ZENKAI Logo" class="w-12 h-12 rounded-lg object-cover">
+                    <!-- Brand Name -->
+                    <h1 class="text-2xl font-bold text-white" style="font-family: 'Orbitron', sans-serif;">ZENKAI</h1>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-white/80 hover:text-amber-100 transition-all duration-300">Home</a>
+                    <a href="about.html" class="nav-link text-white/80 hover:text-amber-100 transition-all duration-300">About</a>
+                    <a href="services.html" class="nav-link text-amber-100 font-semibold">Services</a>
+                    <a href="contact.html" class="nav-link text-white/80 hover:text-amber-100 transition-all duration-300">Contact</a>
+                    <a href="contact.html#contact-form" class="px-6 py-2 bg-gradient-to-r from-amber-100 to-white text-black font-semibold rounded-full hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden mt-4 pb-4">
+                <a href="index.html" class="block py-3 px-4 text-white/80 hover:text-amber-100 hover:bg-white/10 rounded-lg transition-all duration-300">Home</a>
+                <a href="about.html" class="block py-3 px-4 text-white/80 hover:text-amber-100 hover:bg-white/10 rounded-lg transition-all duration-300">About</a>
+                <a href="services.html" class="block py-3 px-4 text-amber-100 font-semibold hover:bg-white/10 rounded-lg transition-all duration-300">Services</a>
+                <a href="contact.html" class="block py-3 px-4 text-white/80 hover:text-amber-100 hover:bg-white/10 rounded-lg transition-all duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80');">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-6 max-w-6xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight" data-aos="fade-up" data-aos-duration="1000" style="font-family: 'Orbitron', sans-serif;">
+                Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-100 to-white">Services</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                Comprehensive digital solutions to transform your business and elevate your brand
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <a href="#web-services" class="px-8 py-4 bg-gradient-to-r from-amber-100 to-white text-black font-semibold rounded-full hover:shadow-2xl hover:shadow-amber-100/50 transition-all duration-300 transform hover:scale-105 hover:translate-y-[-2px]">
+                    Explore Services
+                </a>
+                            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white/50 text-2xl"></i>
+        </div>
+    </section>
+    
+    <!-- Web Development Services -->
+    <section id="web-services" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-amber-100/5 to-transparent"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Web Development</h2>
+                <p class="text-xl text-white/70 max-w-3xl mx-auto">Custom websites that captivate, convert, and grow your business</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Website Development -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-laptop-code text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Website Development</h3>
+                        <p class="text-white/70 mb-6">Full-featured websites with modern design, responsive layouts, and optimal performance.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Custom Design</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Responsive Layout</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>SEO Optimized</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Fast Loading</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Business Websites -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-briefcase text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Business Websites</h3>
+                        <p class="text-white/70 mb-6">Professional corporate websites designed to establish credibility and drive growth.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Corporate Design</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Lead Generation</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Analytics Integration</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>CMS Included</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Websites -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-palette text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Portfolio Websites</h3>
+                        <p class="text-white/70 mb-6">Stunning portfolio websites to showcase your work and attract clients.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Gallery Layouts</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Image Optimization</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Social Integration</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Contact Forms</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Company Websites -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="400">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-building text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Company Websites</h3>
+                        <p class="text-white/70 mb-6">Enterprise-level websites with advanced features and scalability.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Multi-page Design</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Advanced Features</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Team Management</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Scalable Architecture</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Startup Websites -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-rocket text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Startup Websites</h3>
+                        <p class="text-white/70 mb-6">Modern, fast-loading websites perfect for startups and new ventures.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Modern Design</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Fast Performance</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Growth Focused</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Budget Friendly</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Landing Pages -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="600">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-paper-plane text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Landing Pages</h3>
+                        <p class="text-white/70 mb-6">High-converting landing pages designed for marketing campaigns.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Conversion Focused</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>A/B Testing Ready</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Lead Capture</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Analytics Integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mobile & Game Development -->
+    <section class="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-l from-amber-100/5 to-transparent"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Mobile & Game Development</h2>
+                <p class="text-xl text-white/70 max-w-3xl mx-auto">Engaging mobile experiences and immersive games</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mobile Apps -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-mobile-alt text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Mobile Apps</h3>
+                        <p class="text-white/70 mb-6">Native and cross-platform mobile applications for iOS and Android.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>iOS & Android</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Cross-Platform</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>App Store Ready</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Push Notifications</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Game Development -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-gamepad text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Game Development</h3>
+                        <p class="text-white/70 mb-6">Engaging and immersive gaming experiences for various platforms.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>2D & 3D Games</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Multi-platform</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Game Physics</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Multiplayer Support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Website Redesign -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-sync-alt text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Website Redesign</h3>
+                        <p class="text-white/70 mb-6">Transform your existing website with modern design and improved functionality.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Modern UI/UX</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Performance Boost</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>SEO Improvement</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Mobile Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Business Promotion -->
+                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="400">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-chart-line text-black text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Business Promotion</h3>
+                        <p class="text-white/70 mb-6">Digital marketing strategies to boost your online presence and growth.</p>
+                        <ul class="space-y-2 text-white/60 text-sm">
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Social Media Marketing</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Content Strategy</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>SEO Optimization</li>
+                            <li><i class="fas fa-check text-amber-100 mr-2"></i>Brand Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-amber-100/10 to-transparent"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-3xl p-12 border border-white/10" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to Start Your Project?</h2>
+                    <p class="text-xl text-white/80 mb-8">
+                        Let's create something amazing together. Contact us today to discuss your project requirements.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html" class="px-8 py-4 bg-gradient-to-r from-amber-100 to-white text-black font-semibold rounded-full hover:shadow-2xl hover:shadow-amber-100/50 transition-all duration-300 transform hover:scale-105 hover:translate-y-[-2px]">
+                            Start Your Project
+                        </a>
+                        <a href="https://wa.me/2349063711745" target="_blank" class="px-8 py-4 bg-transparent border-2 border-white/50 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:scale-105 hover:translate-y-[-2px]">
+                            Chat Us Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="Logo/logo.jpg1.png" alt="ZENKAI Logo" class="w-10 h-10 rounded-lg object-cover">
+                        <h3 class="text-xl font-bold text-white" style="font-family: 'Orbitron', sans-serif;">ZENKAI</h3>
+                    </div>
+                    <p class="text-white/60">Premium digital development for modern businesses.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-white/60 hover:text-amber-100 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-white/60 hover:text-amber-100 transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-white/60 hover:text-amber-100 transition-colors">Services</a></li>
+                        <li><a href="contact.html" class="text-white/60 hover:text-amber-100 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html" class="text-white/60 hover:text-amber-100 transition-colors">Website Development</a></li>
+                        <li><a href="services.html" class="text-white/60 hover:text-amber-100 transition-colors">Mobile Apps</a></li>
+                        <li><a href="services.html" class="text-white/60 hover:text-amber-100 transition-colors">Game Development</a></li>
+                        <li><a href="services.html" class="text-white/60 hover:text-amber-100 transition-colors">Business Promotion</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <a href="https://t.me/Zenkai_web" class="social-link group" target="_blank">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-telegram text-xl group-hover:text-white"></i>
+                            </div>
+                            <p class="text-white/70 text-center text-xs">Telegram</p>
+                        </a>
+                        
+                        <a href="https://tiktok.com/@zenkai.web" class="social-link group" target="_blank">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-gradient-to-br group-hover:from-cyan-400 group-hover:to-pink-500 group-hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-tiktok text-xl group-hover:text-white"></i>
+                            </div>
+                            <p class="text-white/70 text-center text-xs">TikTok</p>
+                        </a>
+                        
+                        <a href="https://www.facebook.com/share/1GLFpYnC2y/" class="social-link group" target="_blank">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-facebook text-xl group-hover:text-white"></i>
+                            </div>
+                            <p class="text-white/70 text-center text-xs">Facebook</p>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/zenkai.web?igsh=MXZtbWJtZzU0ODRjcg==" class="social-link group" target="_blank">
+                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-pink-500 group-hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-instagram text-xl group-hover:text-white"></i>
+                            </div>
+                            <p class="text-white/70 text-center text-xs">Instagram</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="text-white/60">&copy; 2026 ZENKAI. All rights reserved. | Premium Digital Development</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2349063711745" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-amber-100 to-white rounded-full flex items-center justify-center shadow-lg hover:shadow-amber-100/50 transition-all duration-300 z-50 hover:scale-110 group">
+        <i class="fab fa-whatsapp text-black text-2xl group-hover:animate-pulse"></i>
+    </a>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        // Custom Cursor
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor';
+        document.body.appendChild(cursor);
+        
+        const cursorFollower = document.createElement('div');
+        cursorFollower.className = 'cursor-follower';
+        document.body.appendChild(cursorFollower);
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        // Hide cursor on mobile
+        if (window.innerWidth <= 768) {
+            cursor.style.display = 'none';
+            cursorFollower.style.display = 'none';
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Hide custom cursor on mobile
+            if (window.innerWidth <= 768) {
+                cursor.style.display = 'none';
+                cursorFollower.style.display = 'none';
+            } else {
+                cursor.style.display = 'block';
+                cursorFollower.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="audio-manager.js"></script>
+</body>
+</html>

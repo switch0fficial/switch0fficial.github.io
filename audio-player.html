@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZENKAI Audio Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-audio" loop>
+        <source src="background sound/backgroundsound.mp3.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const audio = document.getElementById('background-audio');
+        audio.volume = 0.2;
+        
+        // Check if audio should be playing
+        const audioEnabled = localStorage.getItem('zenkaiAudioEnabled') !== 'false';
+        let wasPlaying = false;
+        
+        if (audioEnabled) {
+            audio.play().catch(e => console.log('Autoplay blocked:', e));
+            wasPlaying = true;
+        }
+        
+        // Fade out function
+        function fadeOut() {
+            if (!audio.paused) {
+                wasPlaying = true;
+                const fadeInterval = setInterval(() => {
+                    if (audio.volume > 0.05) {
+                        audio.volume -= 0.02;
+                    } else {
+                        clearInterval(fadeInterval);
+                        audio.pause();
+                        audio.volume = 0.2; // Reset volume for next play
+                    }
+                }, 50);
+            }
+        }
+        
+        // Fade in function
+        function fadeIn() {
+            if (wasPlaying && audioEnabled) {
+                audio.volume = 0;
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                const fadeInterval = setInterval(() => {
+                    if (audio.volume < 0.2) {
+                        audio.volume += 0.02;
+                    } else {
+                        clearInterval(fadeInterval);
+                        audio.volume = 0.2;
+                    }
+                }, 100); // 100ms interval for 1 second fade in (10 steps * 100ms = 1 second)
+            }
+        }
+        
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Tab is hidden, fade out and pause
+                fadeOut();
+            } else {
+                // Tab is visible again, fade in and resume
+                fadeIn();
+            }
+        });
+        
+        // Handle window blur (user switches to another window)
+        window.addEventListener('blur', () => {
+            fadeOut();
+        });
+        
+        // Handle window focus (user returns to window)
+        window.addEventListener('focus', () => {
+            fadeIn();
+        });
+        
+        // Listen for messages from parent
+        window.addEventListener('message', (event) => {
+            if (event.data === 'toggle') {
+                if (audio.paused) {
+                    audio.play();
+                    localStorage.setItem('zenkaiAudioEnabled', 'true');
+                    wasPlaying = true;
+                } else {
+                    audio.pause();
+                    localStorage.setItem('zenkaiAudioEnabled', 'false');
+                    wasPlaying = false;
+                }
+            } else if (event.data === 'play') {
+                audio.play();
+                localStorage.setItem('zenkaiAudioEnabled', 'true');
+                wasPlaying = true;
+            } else if (event.data === 'pause') {
+                audio.pause();
+                localStorage.setItem('zenkaiAudioEnabled', 'false');
+                wasPlaying = false;
+            } else if (event.data === 'getStatus') {
+                window.parent.postMessage({
+                    type: 'audioStatus',
+                    playing: !audio.paused
+                }, '*');
+            }
+        });
+        
+        // Send status updates periodically
+        setInterval(() => {
+            window.parent.postMessage({
+                type: 'audioStatus',
+                playing: !audio.paused
+            }, '*');
+        }, 1000);
+    </script>
+</body>
+</html>
