@@ -1,0 +1,8 @@
+PLACEHOLDER IMAGE FILE
+
+Replace this file with your profile picture:
+1. Name your image "profile.png"
+2. Place it in this folder: assets/images/
+3. The website will automatically load it
+
+Recommended: Square format, at least 500x500px

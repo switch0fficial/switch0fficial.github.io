@@ -3,314 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZENKAI - Premium Digital Development</title>
+    <meta name="description" content="SWITCH — gaming content creator creating cinematic edits from Blood Strike and other games.">
+    <meta name="keywords" content="SWITCH, gaming, cinematic edits, Blood Strike, TikTok, gaming creator">
+    <meta name="author" content="SWITCH">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Open Graph -->
+    <meta property="og:title" content="SWITCH | Cinematic Gaming Creator">
+    <meta property="og:description" content="SWITCH — gaming content creator creating cinematic edits from Blood Strike and other games.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tiktok.com/@switch0fficial">
     
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SWITCH | Cinematic Gaming Creator">
+    <meta name="twitter:description" content="SWITCH — gaming content creator creating cinematic edits from Blood Strike and other games.">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Custom Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>SWITCH | BloodStrike Content Creator</title>
     
     <!-- Favicon -->
-    <link rel="icon" href="Logo/logo.jpg1.png">
-</head>
-<body class="bg-black text-white overflow-x-hidden">
+    <link rel="icon" type="image/png" href="assets/images/tab.png">
     
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
-        <div class="text-center">
-            <div class="loading-logo mb-4">
-                <h1 class="text-5xl font-bold text-white animate-pulse">ZENKAI</h1>
-            </div>
-            <div class="loading-bar w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
-                <div class="loading-progress h-full bg-gradient-to-r from-amber-200 to-white animate-pulse"></div>
-            </div>
-        </div>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-inner"></div>
+        <div class="cursor-outer"></div>
     </div>
     
+    <!-- Cinematic Intro -->
+    <div class="cinematic-intro" id="cinematicIntro">
+        <div class="intro-particles"></div>
+        <div class="intro-text">
+            <h1 class="glitch-text" data-text="SWITCH">SWITCH</h1>
+            <div class="intro-subtitle">CINEMATIC GAMING CREATOR</div>
+        </div>
+        <div class="intro-scanlines"></div>
+    </div>
+    
+    <!-- 3D Background Canvas -->
+    <canvas id="threeCanvas" class="three-background"></canvas>
+    
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 bg-black/80 backdrop-blur-lg border-b border-white/10">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <!-- Logo Section -->
-                <div class="flex items-center space-x-4">
-                    <!-- Logo -->
-                    <img src="Logo/logo.jpg1.png" alt="ZENKAI Logo" class="w-12 h-12 rounded-lg object-cover">
-                    <!-- Brand Name -->
-                    <h1 class="text-2xl font-bold text-white" style="font-family: 'Orbitron', sans-serif;">ZENKAI</h1>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-amber-100 font-semibold">Home</a>
-                    <a href="about.html" class="nav-link text-white/80 hover:text-amber-100 transition-all duration-300">About</a>
-                    <a href="services.html" class="nav-link text-white/80 hover:text-amber-100 transition-all duration-300">Services</a>
-                    <a href="contact.html" class="nav-link text-white/80 hover:text-amber-100 transition-all duration-300">Contact</a>
-                    <a href="contact.html#contact-form" class="px-6 py-2 bg-gradient-to-r from-amber-100 to-white text-black font-semibold rounded-full hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300 transform hover:scale-105">
-                        Get Started
-                    </a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-white">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden mt-4 pb-4">
-                <a href="index.html" class="block py-3 px-4 text-amber-100 font-semibold hover:bg-white/10 rounded-lg transition-all duration-300">Home</a>
-                <a href="about.html" class="block py-3 px-4 text-white/80 hover:text-amber-100 hover:bg-white/10 rounded-lg transition-all duration-300">About</a>
-                <a href="services.html" class="block py-3 px-4 text-white/80 hover:text-amber-100 hover:bg-white/10 rounded-lg transition-all duration-300">Services</a>
-                <a href="contact.html" class="block py-3 px-4 text-white/80 hover:text-amber-100 hover:bg-white/10 rounded-lg transition-all duration-300">Contact</a>
-            </div>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">SWITCH</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">HOME</a></li>
+                <li><a href="#edits" class="nav-link">EDITS</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#connect" class="nav-link">CONNECT</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
     
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center">
-        <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
-        </div>
-        
-        <!-- Particles Container -->
-        <div id="particles-js" class="absolute inset-0"></div>
-        
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center px-6 max-w-6xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight" data-aos="fade-up" data-aos-duration="1000" style="font-family: 'Orbitron', sans-serif;">
-                Professional Website Development<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-100 to-white">
-                    For Businesses, Brands & Startups
-                </span>
-            </h1>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title glitch-text" data-text="SWITCH">SWITCH</h1>
+                <h2 class="hero-subtitle">CINEMATIC GAMING CREATOR</h2>
+                <p class="hero-description">Turning gaming moments into cinematic experiences.</p>
+                <p class="hero-secondary">Gaming clips. Cinematic edits. Blood Strike and beyond.</p>
+                
+                <div class="hero-buttons">
+                    <a href="https://www.tiktok.com/@switch0fficial" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <span class="btn-text">FOLLOW SWITCH</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="#edits" class="btn btn-secondary">
+                        <span class="btn-text">WATCH THE EDITS</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029VbAf5sq5fM5b2CXTge32" target="_blank" rel="noopener noreferrer" class="btn btn-tertiary">
+                        <span class="btn-text">JOIN THE COMMUNITY</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+            </div>
             
-            <p class="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                ZENKAI helps businesses, creators, startups, and upcoming companies build modern websites, apps, and digital experiences that stand out.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                <a href="contact.html" class="px-8 py-4 bg-gradient-to-r from-amber-100 to-white text-black font-semibold rounded-full hover:shadow-2xl hover:shadow-amber-100/50 transition-all duration-300 transform hover:scale-105 hover:translate-y-[-2px]">
-                    Contact Me
-                </a>
-                <a href="services.html" class="px-8 py-4 bg-transparent border-2 border-white/50 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:scale-105 hover:translate-y-[-2px]">
-                    View Services
-                </a>
+            <div class="hero-profile">
+                <div class="profile-frame">
+                    <div class="profile-ring profile-ring-outer"></div>
+                    <div class="profile-ring profile-ring-inner"></div>
+                    <div class="profile-glow"></div>
+                    <div class="profile-particles"></div>
+                    <img src="assets/images/pfp.jpg.png" alt="SWITCH Profile" class="profile-image" id="profileImage">
+                    <div class="profile-hologram"></div>
+                </div>
             </div>
         </div>
         
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-white/50 text-2xl"></i>
-        </div>
-    </section>
-    
-    <!-- Services Overview Section -->
-    <section class="py-20 relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">What We Do</h2>
-                <p class="text-xl text-white/70 max-w-3xl mx-auto">Transform your digital presence with our cutting-edge development services</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Website Development -->
-                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-laptop-code text-black text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white">Website Development</h3>
-                        <p class="text-white/70">Custom, responsive websites that captivate your audience and drive results.</p>
-                    </div>
-                </div>
-                
-                <!-- Business Promotion -->
-                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-rocket text-black text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white">Business Promotion</h3>
-                        <p class="text-white/70">Strategic digital marketing to boost your online presence and growth.</p>
-                    </div>
-                </div>
-                
-                <!-- App Development -->
-                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-mobile-alt text-black text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white">App Development</h3>
-                        <p class="text-white/70">Native and cross-platform mobile applications for iOS and Android.</p>
-                    </div>
-                </div>
-                
-                <!-- Game Development -->
-                <div class="service-card group relative bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-amber-100/30 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-amber-100/20" data-aos="fade-up" data-aos-delay="400">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-100/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-100 to-white rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <i class="fas fa-gamepad text-black text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white">Game Development</h3>
-                        <p class="text-white/70">Engaging and immersive gaming experiences for various platforms.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-decorations">
+            <div class="hud-line hud-line-1"></div>
+            <div class="hud-line hud-line-2"></div>
+            <div class="hud-line hud-line-3"></div>
+            <div class="system-label">SYSTEM: ONLINE</div>
+            <div class="coordinates">COORD: 45.0123, -93.2101</div>
         </div>
     </section>
     
-    <!-- Why Choose ZENKAI Section -->
-    <section class="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-amber-100/5 to-transparent"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Why Choose ZENKAI</h2>
-                <p class="text-xl text-white/70 max-w-3xl mx-auto">Experience excellence in digital development with proven results</p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <h2 class="section-title">THE CREATOR BEHIND THE EDITS</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>SWITCH is a gaming content creator focused on transforming raw gameplay into cinematic gaming edits.</p>
+                <p>Main focus includes Blood Strike, gaming highlights, cinematic edits, action clips, and other games depending on the content.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <h3 class="text-3xl font-bold mb-6 text-white">Building Digital Excellence</h3>
-                    <p class="text-white/70 mb-6">
-                        At ZENKAI, we combine cutting-edge technology with creative design to deliver digital solutions that not only look stunning but also drive measurable results. Our commitment to quality and innovation ensures your business stands out in the digital landscape.
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-100 mt-1 mr-3"></i>
-                            <span class="text-white/80">Premium, modern designs that captivate audiences</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-100 mt-1 mr-3"></i>
-                            <span class="text-white/80">Fast, reliable delivery with attention to detail</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-amber-100 mt-1 mr-3"></i>
-                            <span class="text-white/80">Ongoing support and maintenance for your peace of mind</span>
-                        </li>
-                    </ul>
+            <div class="about-cards">
+                <div class="card-3d" data-tilt>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 12h4m-2-2v4m8-6h4m-2-2v4M12 6v4m0-2h4"/>
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        </svg>
+                    </div>
+                    <h3>GAMER</h3>
+                    <div class="card-glow"></div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-6" data-aos="fade-left">
-                    <div class="text-center p-6 bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl border border-white/10">
-                        <div class="text-4xl font-bold text-amber-100 mb-2 counter" data-target="70">0</div>
-                        <div class="text-white/70">Happy Clients</div>
+                <div class="card-3d" data-tilt>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
                     </div>
-                    <div class="text-center p-6 bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl border border-white/10">
-                        <div class="text-4xl font-bold text-amber-100 mb-2">4.8+</div>
-                        <div class="text-white/70">Star Ratings</div>
+                    <h3>CINEMATIC EDITOR</h3>
+                    <div class="card-glow"></div>
+                </div>
+                
+                <div class="card-3d" data-tilt>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
                     </div>
-                    <div class="text-center p-6 bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl border border-white/10">
-                        <div class="text-4xl font-bold text-amber-100 mb-2">24h</div>
-                        <div class="text-white/70">Fast Response</div>
+                    <h3>BLOOD STRIKE CREATOR</h3>
+                    <div class="card-glow"></div>
+                </div>
+                
+                <div class="card-3d" data-tilt>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
                     </div>
-                    <div class="text-center p-6 bg-gradient-to-br from-amber-100/10 to-white/5 backdrop-blur-lg rounded-2xl border border-white/10">
-                        <div class="text-4xl font-bold text-amber-100 mb-2">100%</div>
-                        <div class="text-white/70">Modern UI/UX</div>
-                    </div>
+                    <h3>CONTENT CREATOR</h3>
+                    <div class="card-glow"></div>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- Edits / Content Section -->
+    <section class="edits" id="edits">
+        <div class="section-header">
+            <h2 class="section-title">CINEMATIC ARCHIVE</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="edits-grid" id="editsGrid">
+            <!-- Content cards will be generated by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- Featured Edit Section -->
+    <section class="featured" id="featured">
+        <div class="section-header">
+            <h2 class="section-title">FEATURED TRANSMISSION</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="featured-content">
+            <div class="featured-card card-3d" data-tilt>
+                <div class="featured-preview">
+                    <div class="featured-number">01</div>
+                    <div class="featured-overlay">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="play-icon">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="featured-info">
+                    <h3>PINNED CINEMATIC EDIT</h3>
+                    <p>Experience the pinned Blood Strike cinematic edit.</p>
+                    <a href="https://vt.tiktok.com/ZSqEA9H8n/" target="_blank" rel="noopener noreferrer" class="btn btn-primary featured-btn">
+                        <span class="btn-text">WATCH EDIT</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+                <div class="featured-glow"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TikTok Support Section -->
+    <section class="support" id="support">
+        <div class="section-header">
+            <h2 class="section-title">SUPPORT THE SWITCH</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="support-content">
+            <p>If you enjoy the edits, follow the journey on TikTok and help keep the content moving.</p>
+            
+            <a href="https://www.tiktok.com/@switch0fficial" target="_blank" rel="noopener noreferrer" class="support-button">
+                <div class="support-ring support-ring-outer"></div>
+                <div class="support-ring support-ring-inner"></div>
+                <div class="support-particles"></div>
+                <div class="support-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                </div>
+                <span class="support-text">FOLLOW ON TIKTOK</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- WhatsApp Community Section -->
+    <section class="community" id="community">
+        <div class="section-header">
+            <h2 class="section-title">JOIN THE COMMUNITY</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="community-content">
+            <p>Stay connected and follow the latest updates through the SWITCH WhatsApp channel.</p>
+            
+            <a href="https://whatsapp.com/channel/0029VbAf5sq5fM5b2CXTge32" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <span class="btn-text">FOLLOW WHATSAPP CHANNEL</span>
+                <span class="btn-glow"></span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Business Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">BUSINESS / COLLABORATIONS</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="contact-content">
+            <p>For business inquiries, collaborations, partnerships and creator opportunities.</p>
+            
+            <div class="contact-email">
+                <a href="mailto:switchtiktokofficial@gmail.com" class="email-link">switchtiktokofficial@gmail.com</a>
+            </div>
+            
+            <a href="mailto:switchtiktokofficial@gmail.com" class="btn btn-secondary">
+                <span class="btn-text">SEND BUSINESS EMAIL</span>
+                <span class="btn-glow"></span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Social Links Section -->
+    <section class="social" id="connect">
+        <div class="section-header">
+            <h2 class="section-title">CONNECT</h2>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://www.tiktok.com/@switch0fficial" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+                <span>TikTok</span>
+            </a>
+            
+            <a href="https://whatsapp.com/channel/0029VbAf5sq5fM5b2CXTge32" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                </svg>
+                <span>WhatsApp</span>
+            </a>
+            
+            <a href="mailto:switchtiktokofficial@gmail.com" class="social-link" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <span>Email</span>
+            </a>
         </div>
     </section>
     
     <!-- Footer -->
-    <footer class="bg-black border-t border-white/10 py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <img src="Logo/logo.jpg1.png" alt="ZENKAI Logo" class="w-10 h-10 rounded-lg object-cover">
-                        <h3 class="text-xl font-bold text-white" style="font-family: 'Orbitron', sans-serif;">ZENKAI</h3>
-                    </div>
-                    <p class="text-white/60">Premium digital development for modern businesses.</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-white/60 hover:text-amber-100 transition-colors">Home</a></li>
-                        <li><a href="about.html" class="text-white/60 hover:text-amber-100 transition-colors">About</a></li>
-                        <li><a href="services.html" class="text-white/60 hover:text-amber-100 transition-colors">Services</a></li>
-                        <li><a href="contact.html" class="text-white/60 hover:text-amber-100 transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#services" class="text-white/60 hover:text-amber-100 transition-colors">Website Development</a></li>
-                        <li><a href="#services" class="text-white/60 hover:text-amber-100 transition-colors">Mobile Apps</a></li>
-                        <li><a href="#services" class="text-white/60 hover:text-amber-100 transition-colors">Game Development</a></li>
-                        <li><a href="#services" class="text-white/60 hover:text-amber-100 transition-colors">Business Promotion</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Follow Us</h4>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <a href="https://t.me/Zenkai_web" class="social-link group" target="_blank">
-                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300">
-                                <i class="fab fa-telegram text-xl group-hover:text-white"></i>
-                            </div>
-                            <p class="text-white/70 text-center text-xs">Telegram</p>
-                        </a>
-                        
-                        <a href="https://tiktok.com/@zenkai.web" class="social-link group" target="_blank">
-                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-gradient-to-br group-hover:from-cyan-400 group-hover:to-pink-500 group-hover:scale-110 transition-all duration-300">
-                                <i class="fab fa-tiktok text-xl group-hover:text-white"></i>
-                            </div>
-                            <p class="text-white/70 text-center text-xs">TikTok</p>
-                        </a>
-                        
-                        <a href="https://www.facebook.com/share/1GLFpYnC2y/" class="social-link group" target="_blank">
-                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300">
-                                <i class="fab fa-facebook text-xl group-hover:text-white"></i>
-                            </div>
-                            <p class="text-white/70 text-center text-xs">Facebook</p>
-                        </a>
-                        
-                        <a href="https://www.instagram.com/zenkai.web?igsh=MXZtbWJtZzU0ODRjcg==" class="social-link group" target="_blank">
-                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-2 group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-pink-500 group-hover:scale-110 transition-all duration-300">
-                                <i class="fab fa-instagram text-xl group-hover:text-white"></i>
-                            </div>
-                            <p class="text-white/70 text-center text-xs">Instagram</p>
-                        </a>
-                    </div>
-                </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>SWITCH</h3>
+                <p>CINEMATIC GAMING CREATOR</p>
             </div>
             
-            <div class="border-t border-white/10 mt-8 pt-8 text-center">
-                <p class="text-white/60">&copy; 2026 ZENKAI. All rights reserved. | Premium Digital Development</p>
+            <div class="footer-links">
+                <a href="https://www.tiktok.com/@switch0fficial" target="_blank" rel="noopener noreferrer">TikTok</a>
+                <a href="https://whatsapp.com/channel/0029VbAf5sq5fM5b2CXTge32" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="mailto:switchtiktokofficial@gmail.com">Business Email</a>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>&copy; 2026 SWITCH. All rights reserved.</p>
             </div>
         </div>
     </footer>
     
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/2349063711745" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-amber-100 to-white rounded-full flex items-center justify-center shadow-lg hover:shadow-amber-100/50 transition-all duration-300 z-50 hover:scale-110 group">
-        <i class="fab fa-whatsapp text-black text-2xl group-hover:animate-pulse"></i>
-    </a>
-    
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
-    <script src="audio-manager.js"></script>
 </body>
 </html>
