@@ -1,4 +1,0 @@
-PLACEHOLDER ICON FILE
-
-Optional: Add a custom favicon.ico or favicon.png
-Current: Using default browser icon
